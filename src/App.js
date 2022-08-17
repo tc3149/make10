@@ -1,6 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Board from "./components/Board";
+import CalcBoard from "./components/CalcBoard";
+import Keyboard from "./components/Keyboard";
 
 export const AppContext = createContext();
 
@@ -12,9 +14,6 @@ function App() {
     Math.floor(Math.random() * 10),
   ]);
 
-  console.log(chosenNumbers);
-  console.log(chosenNumbers[0]);
-
   return (
     <div className="App">
       <nav>
@@ -23,6 +22,8 @@ function App() {
       <AppContext.Provider value={{ chosenNumbers }}>
         <div className="game">
           <Board />
+          <CalcBoard />
+          <Keyboard />
         </div>
       </AppContext.Provider>
     </div>

@@ -44,6 +44,14 @@ nav h1 {
   flex-direction: column;
 }
 
+.calcBoard {
+  width: 450px;
+  height: 60px;
+  border: 0px solid black;
+  display: flex;
+  flex-direction: column;
+}
+
 .row {
   flex: 33%;
   display: flex;
@@ -62,6 +70,10 @@ nav h1 {
   font-weight: bolder;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+#red {
+  border: 1px solid rgb(181, 130, 41);
 }
 
 #correct {
@@ -106,7 +118,7 @@ nav h1 {
 }
 
 .key {
-  width: 50px;
+  width: 100px;
   height: 70px;
   margin: 5px;
   border-radius: 4px;
@@ -119,9 +131,10 @@ nav h1 {
   cursor: pointer;
 }
 
-#big {
-  width: 100px;
+#operator {
+  border: 1.5px solid rgb(181, 130, 41);
 }
+
 #disabled {
   background-color: #3a393c;
 }
