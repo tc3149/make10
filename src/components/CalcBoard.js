@@ -3,16 +3,12 @@ import { AppContext } from "../App";
 import Letter from "./Letter";
 
 function CalcBoard() {
+  const { input } = useContext(AppContext);
+
   return (
     <div className="calcBoard">
       <div className="row">
-        <Letter val={""} />
-        <Letter val={""} id="red" />
-        <Letter val={""} />
-        <Letter val={""} id="red" />
-        <Letter val={""} />
-        <Letter val={""} id="red" />
-        <Letter val={""} />
+        <Letter val={input} id="red" />
       </div>
     </div>
   );

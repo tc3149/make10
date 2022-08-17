@@ -29,7 +29,7 @@ nav h1 {
 }
 .game {
   width: 100vw;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 190px);
   display: flex;
   align-items: center;
   padding-top: 125px;
@@ -45,6 +45,7 @@ nav h1 {
 }
 
 .calcBoard {
+  padding-top: 20px;
   width: 450px;
   height: 60px;
   border: 0px solid black;
@@ -133,6 +134,10 @@ nav h1 {
 
 #operator {
   border: 1.5px solid rgb(181, 130, 41);
+}
+
+#blue {
+  border: 1.5px solid lightblue;
 }
 
 #disabled {
