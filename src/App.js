@@ -7,6 +7,8 @@ import Keyboard from "./components/Keyboard";
 export const AppContext = createContext();
 
 function App() {
+  var nerdamer = require("nerdamer");
+
   const [chosenNumbers] = useState([
     Math.floor(Math.random() * 10),
     Math.floor(Math.random() * 10),
@@ -26,13 +28,25 @@ function App() {
     setInput(temp.slice(0, -1));
   };
 
-  const onEnter = () => {};
+  const onEnter = () => {
+    try {
+      var e = nerdamer(input);
+      if (e.text() === "10") {
+        alert("You won!");
+      } else {
+        alert("Does not add up to 10");
+      }
+    } catch (error) {
+      alert("Equation not valid");
+    }
+  };
 
   return (
     <div className="App">
       <nav>
         <h1>make10.</h1>
       </nav>
+      <p>Based on the popular Sydney train carriage game</p>
       <AppContext.Provider
         value={{ chosenNumbers, input, onSelectLetter, onDelete, onEnter }}
       >

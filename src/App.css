@@ -29,10 +29,10 @@ nav h1 {
 }
 .game {
   width: 100vw;
-  height: calc(100vh - 190px);
+  height: calc(100vh - 240px);
   display: flex;
   align-items: center;
-  padding-top: 125px;
+  padding-top: 105px;
   flex-direction: column;
 }
 
