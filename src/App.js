@@ -9,7 +9,7 @@ export const AppContext = createContext();
 function App() {
   var nerdamer = require("nerdamer");
 
-  const [chosenNumbers] = useState([
+  const [chosenNumbers, setChosenNumbers] = useState([
     Math.floor(Math.random() * 10),
     Math.floor(Math.random() * 10),
     Math.floor(Math.random() * 10),
@@ -17,6 +17,16 @@ function App() {
   ]);
 
   const [input, setInput] = useState("");
+
+  const onReset = () => {
+    setChosenNumbers([
+      Math.floor(Math.random() * 10),
+      Math.floor(Math.random() * 10),
+      Math.floor(Math.random() * 10),
+      Math.floor(Math.random() * 10),
+    ]);
+    setInput("");
+  };
 
   const onSelectLetter = (keyVal) => {
     let temp = input;
@@ -48,7 +58,14 @@ function App() {
       </nav>
       <p>Based on the popular Sydney train carriage game</p>
       <AppContext.Provider
-        value={{ chosenNumbers, input, onSelectLetter, onDelete, onEnter }}
+        value={{
+          chosenNumbers,
+          input,
+          onSelectLetter,
+          onDelete,
+          onEnter,
+          onReset,
+        }}
       >
         <div className="game">
           <Board />
@@ -56,6 +73,9 @@ function App() {
           <Keyboard />
         </div>
       </AppContext.Provider>
+      <p className="credits">
+        Made with love ❤️ by <b>Tom</b>
+      </p>
     </div>
   );
 }

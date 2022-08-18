@@ -56,6 +56,9 @@ function Keyboard() {
           return <Key keyVal={key} operator />;
         })}
       </div>
+      <div className="line3">
+        <Key keyVal={"I can't do this!"} />
+      </div>
     </div>
   );
 }

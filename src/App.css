@@ -32,12 +32,13 @@ nav h1 {
   height: calc(100vh - 240px);
   display: flex;
   align-items: center;
-  padding-top: 105px;
+  padding-top: 50px;
   flex-direction: column;
 }
 
 .board {
   width: 450px;
+  max-width: 100%;
   height: 110px;
   border: 0px solid black;
   display: flex;
@@ -46,6 +47,7 @@ nav h1 {
 
 .calcBoard {
   padding-top: 20px;
+  max-width: 100%;
   width: 450px;
   height: 60px;
   border: 0px solid black;
@@ -91,8 +93,9 @@ nav h1 {
 
 .keyboard {
   width: 700px;
+  max-width: 100%;
   height: 300px;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .line1 {
@@ -132,6 +135,11 @@ nav h1 {
   cursor: pointer;
 }
 
+.credits {
+  margin-top: 50px;
+  font-size: small;
+}
+
 #operator {
   border: 1.5px solid rgb(181, 130, 41);
 }
@@ -142,4 +150,10 @@ nav h1 {
 
 #disabled {
   background-color: #3a393c;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .credits {
+    margin-top: 0px;
+  }
 }
