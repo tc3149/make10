@@ -65,7 +65,7 @@ nav h1 {
 .letter {
   flex: 33%;
   height: 100%;
-  border: 1px solid grey;
+  border: 1px solid rgb(128, 128, 128);
   margin: 5px;
   display: grid;
   place-items: center;
@@ -73,6 +73,10 @@ nav h1 {
   font-weight: bolder;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+#used {
+  border: 1px solid rgb(35, 224, 241);
 }
 
 #red {

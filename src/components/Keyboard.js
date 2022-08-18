@@ -5,7 +5,7 @@ import Key from "./Key";
 function Keyboard() {
   const keys = ["+", "-", "*", "/", "^"];
   const keys2 = ["ENTER", "(", ")", "DELETE"];
-  const { chosenNumbers, onSelectLetter, onDelete, onEnter } =
+  const { chosenNumbers, onSelectLetter, onDelete, onEnter, onUseNumber } =
     useContext(AppContext);
 
   const handleKeyboard = useCallback((event) => {
@@ -14,11 +14,16 @@ function Keyboard() {
     } else if (event.key === "Backspace") {
       onDelete();
     } else {
-      chosenNumbers.forEach((key) => {
-        if (event.key.toString() === key.toString()) {
-          onSelectLetter(key);
+      for (let i = 0; i < chosenNumbers.length; i++) {
+        if (
+          event.key.toString() === chosenNumbers[i].num.toString() &&
+          chosenNumbers[i].used !== true
+        ) {
+          onUseNumber(i);
+          onSelectLetter(chosenNumbers[i].num);
+          return;
         }
-      });
+      }
       keys.forEach((key) => {
         if (event.key.toString() === key.toString()) {
           onSelectLetter(key);
@@ -42,8 +47,8 @@ function Keyboard() {
   return (
     <div className="keyboard">
       <div className="line1">
-        {chosenNumbers.map((key) => {
-          return <Key keyVal={key} />;
+        {chosenNumbers.map((key, index) => {
+          return <Key keyVal={key.num} index={index} />;
         })}
       </div>
       <div className="line2">

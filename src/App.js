@@ -10,20 +10,20 @@ function App() {
   var nerdamer = require("nerdamer");
 
   const [chosenNumbers, setChosenNumbers] = useState([
-    Math.floor(Math.random() * 10),
-    Math.floor(Math.random() * 10),
-    Math.floor(Math.random() * 10),
-    Math.floor(Math.random() * 10),
+    { num: Math.floor(Math.random() * 10), used: false },
+    { num: Math.floor(Math.random() * 10), used: false },
+    { num: Math.floor(Math.random() * 10), used: false },
+    { num: Math.floor(Math.random() * 10), used: false },
   ]);
 
   const [input, setInput] = useState("");
 
   const onReset = () => {
     setChosenNumbers([
-      Math.floor(Math.random() * 10),
-      Math.floor(Math.random() * 10),
-      Math.floor(Math.random() * 10),
-      Math.floor(Math.random() * 10),
+      { num: Math.floor(Math.random() * 10), used: false },
+      { num: Math.floor(Math.random() * 10), used: false },
+      { num: Math.floor(Math.random() * 10), used: false },
+      { num: Math.floor(Math.random() * 10), used: false },
     ]);
     setInput("");
   };
@@ -33,8 +33,44 @@ function App() {
     setInput((temp += keyVal));
   };
 
+  const onUseNumber = (index) => {
+    console.log("we used ", index);
+    let newNumbers = chosenNumbers.map((item, c_index) => {
+      if (index === c_index) {
+        return { ...item, used: true };
+      }
+      return item;
+    });
+
+    setChosenNumbers(newNumbers);
+  };
+
   const onDelete = () => {
     let temp = input;
+    let val = temp.slice(-1)[0];
+
+    if (Number.isInteger(parseInt(val))) {
+      let newNumbers = [];
+      let entered = false;
+      for (let i = 0; i < chosenNumbers.length; i++) {
+        if (
+          chosenNumbers[i].num == parseInt(val) &&
+          entered == false &&
+          chosenNumbers[i].used == true
+        ) {
+          newNumbers.push({ num: chosenNumbers[i].num, used: false });
+          entered = true;
+          continue;
+        } else {
+          newNumbers.push(chosenNumbers[i]);
+        }
+      }
+      console.log(newNumbers);
+      setChosenNumbers(newNumbers);
+    }
+
+    // have to remove used if it is a number
+
     setInput(temp.slice(0, -1));
   };
 
@@ -44,7 +80,7 @@ function App() {
       if (e.text() === "10") {
         alert("You won!");
       } else {
-        alert("Does not add up to 10");
+        alert(`${e} does not equal to 10`);
       }
     } catch (error) {
       alert("Equation not valid");
@@ -65,6 +101,7 @@ function App() {
           onDelete,
           onEnter,
           onReset,
+          onUseNumber,
         }}
       >
         <div className="game">
