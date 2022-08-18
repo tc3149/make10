@@ -93,7 +93,7 @@ nav h1 {
 
 .keyboard {
   width: 700px;
-  max-width: 100%;
+  max-width: 95%;
   height: 300px;
   margin-top: 30px;
 }
@@ -136,8 +136,8 @@ nav h1 {
 }
 
 .credits {
-  margin-top: 50px;
   font-size: small;
+  margin-top: 50px;
 }
 
 #operator {
